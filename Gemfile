@@ -25,6 +25,8 @@ gem 'puma', '~> 3.7'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS),
 # making cross-origin AJAX possible
 gem 'rack-cors'
+# Rack middleware for blocking & throttling
+gem 'rack-attack'
 
 group :development, :test do
 # RSpec for Rails-3+ http://relishapp.com/rspec/rspec-rails
