@@ -35,6 +35,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 # Guard::RSpec automatically run your specs (much like autotest) https://rubygems.org/gems/guard-rspec
   gem 'guard-rspec', require: false
+# Factory Bot ♥ Rails https://thoughtbot.com/services/ruby-…
+  gem 'factory_bot_rails'
+# Faker refactored. https://github.com/ffaker/ffaker
+  gem 'ffaker'
 end
 
 group :development do
