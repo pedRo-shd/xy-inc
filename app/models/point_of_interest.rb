@@ -1,5 +1,7 @@
 class PointOfInterest < ApplicationRecord
 
+  attr_accessor :d_max
+
   validates_presence_of :name, :x, :y
   validate :coordinates_negative
 
