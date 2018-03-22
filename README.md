@@ -43,17 +43,67 @@ Este projeto suporta API RESTful:
 ### Examplos de chamadas a API
 * Serviço para cadastrar pontos de interesse, com 3 atributos: Nome do POI, coordenada X
 (inteiro não negativo) e coordenada Y (inteiro não negativo)
-  * http://localhost:3000/api/v1/points_of_interest.json
+  * POST http://localhost:3000/api/v1/points_of_interest.json
 
   ATRIBUTOS:
   - Nome do POI: 'name'
   - Coordenada X: 'x'
   - Coordenada Y: 'y'
 
-  BODY:
+  EXAMPLE BODY:
   ```
-  {"point_of_interest":{
+  {
     "name": "Padaria", "x": "10", "y": "10"
-    }
   }
   ```
+
+  * Serviço para listar todos os POIs cadastrados.
+    * GET http://localhost:3000/api/v1/points_of_interest.json
+
+    EXAMPLE RESPONSE BODY:
+    ```
+    [
+      {
+        "id": 1,
+        "name": "Padaria",
+        "x": 10,
+        "y": 10,
+        "created_at": "2018-03-22T21:25:16.435Z",
+        "updated_at": "2018-03-22T21:25:16.435Z"
+      }
+    }
+    ```
+
+    * Serviço para listar POIs por proximidade. Este serviço receberá uma coordenada X
+    e uma coordenada Y, especificando um ponto de referência, bem como uma distância
+    máxima (d-max) em metros. O serviço deverá retornar todos os POIs da base de dados
+    que estejam a uma distância menor ou igual a d-max a partir do ponto de referência.
+      * GET http://localhost:3000/api/v1/points_of_interest.json
+
+      ATRIBUTOS:
+      - Coordenada X: 'x'
+      - Coordenada Y: 'y'
+      - Distância máxima: 'd_max'
+
+      EXAMPLE QUERY PARAMETERS:
+      ```
+      {
+        "x": 8,
+        "y": 8,
+        "d_max": 2
+      }
+      ```
+
+      EXAMPLE RESPONSE BODY:
+      ```
+      [
+        {
+          "id": 1,
+          "name": "Padaria",
+          "x": 10,
+          "y": 10,
+          "created_at": "2018-03-22T21:25:16.435Z",
+          "updated_at": "2018-03-22T21:25:16.435Z"
+        }
+      ]
+      ```

@@ -8,55 +8,35 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
 
     context "register point of interest" do
       it "must have success status with allowed attributes" do
-        post :create, params: {
-           point_of_interest: {
-              name: 'Restaurant', x: 10, y: 25
-           }
-        }
+        post :create, params: { name: 'Restaurant', x: 10, y: 25 }
 
         expect(response).to be_success
         expect(response).to have_http_status(201)
       end
 
       it "mustn't have success status with attributes x negative" do
-        post :create, params: {
-           point_of_interest: {
-              name: 'Restaurant', x: -10, y: 25
-           }
-        }
+        post :create, params: { name: 'Restaurant', x: -10, y: 25 }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
       end
 
       it "mustn't have success status without attributes name" do
-        post :create, params: {
-           point_of_interest: {
-              name: '', x: -10, y: 25
-           }
-        }
+        post :create, params: { name: '', x: -10, y: 25 }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
       end
 
       it "mustn't have success status with attributes y negative" do
-        post :create, params: {
-           point_of_interest: {
-              name: '', x: 10, y: -25
-           }
-        }
+        post :create, params: { name: '', x: 10, y: -25 }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
       end
 
       it "mustn't have success status with invalid attributes params" do
-        post :create, params: {
-           point_of_interest: {
-              nameeeeeee: 'Restaurant', x_x: 10, y: 25
-           }
-        }
+        post :create, params: { nameeeeeee: 'Restaurant', x_x: 10, y: 25 }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
@@ -83,51 +63,31 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
       end
 
       it "must return 3 points of interest" do
-        get :get_by_proximity, params: {
-          point_of_interest: {
-            x: 20, y: 10, d_max: 10
-          }
-        }
+        get :get_by_proximity, params: { x: 20, y: 10, d_max: 10 }
 
         expect(JSON.parse(response.body).count).to eql(3)
       end
 
       it "mustn't return points of interest" do
-        get :get_by_proximity, params: {
-          point_of_interest: {
-            x: 1000, y: 1000, d_max: 20
-          }
-        }
+        get :get_by_proximity, params: { x: 1000, y: 1000, d_max: 20 }
 
         expect(JSON.parse(response.body).count).to eql(0)
       end
 
       it "must return 1 point of interest" do
-        get :get_by_proximity, params: {
-          point_of_interest: {
-            x: 40, y: 40, d_max: 10
-          }
-        }
+        get :get_by_proximity, params: { x: 40, y: 40, d_max: 10 }
 
         expect(JSON.parse(response.body).count).to eql(1)
       end
 
       it "must return 1 point of interest" do
-        get :get_by_proximity, params: {
-          point_of_interest: {
-            x: 99, y: 1, d_max: 1
-          }
-        }
+        get :get_by_proximity, params: { x: 99, y: 1, d_max: 1 }
 
         expect(JSON.parse(response.body).count).to eql(1)
       end
 
       it "must return 1 point of interest" do
-        get :get_by_proximity, params: {
-          point_of_interest: {
-            x: 30, y: 30, d_max: 20
-          }
-        }
+        get :get_by_proximity, params: { x: 30, y: 30, d_max: 20 }
 
         expect(JSON.parse(response.body).count).to eql(1)
       end

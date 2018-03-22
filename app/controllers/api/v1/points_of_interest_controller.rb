@@ -2,6 +2,7 @@ class Api::V1::PointsOfInterestController < ApplicationController
 
   def index
     @points_of_interest = PointOfInterest.all
+    render json: @points_of_interest
   end
 
   def create
@@ -24,6 +25,6 @@ class Api::V1::PointsOfInterestController < ApplicationController
   private
 
   def point_of_interest_params
-    params.require(:point_of_interest).permit(:name, :x, :y, :d_max)
+    params.permit(:name, :x, :y, :d_max)
   end
 end
