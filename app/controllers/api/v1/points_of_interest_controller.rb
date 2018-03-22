@@ -14,10 +14,16 @@ class Api::V1::PointsOfInterestController < ApplicationController
     end
   end
 
+  def get_by_proximity
+    @points_of_interest_by_proximity = PointByProximity.new(point_of_interest_params)
+                                                       .call
+    render json: @points_of_interest_by_proximity, status: 200
+  end
+
 
   private
 
   def point_of_interest_params
-    params.require(:point_of_interest).permit(:name, :x, :y)
+    params.require(:point_of_interest).permit(:name, :x, :y, :d_max)
   end
 end
