@@ -47,7 +47,7 @@ Este projeto suporta API RESTful:
 ### Examplos de chamadas a API
 * Serviço para cadastrar pontos de interesse, com 3 atributos: Nome do POI, coordenada X
 (inteiro não negativo) e coordenada Y (inteiro não negativo)
-  * POST http://localhost:3000/api/v1/points_of_interest.json
+  * POST http://localhost:3000/api/v1/points_of_interest
 
   ATRIBUTOS:
   - Nome do POI: 'name'
@@ -62,7 +62,7 @@ Este projeto suporta API RESTful:
   ```
 
   * Serviço para listar todos os POIs cadastrados.
-    * GET http://localhost:3000/api/v1/points_of_interest.json
+    * GET http://localhost:3000/api/v1/points_of_interest
 
     EXAMPLE RESPONSE BODY:
     ```
@@ -82,7 +82,7 @@ Este projeto suporta API RESTful:
   e uma coordenada Y, especificando um ponto de referência, bem como uma distância
   máxima (d-max) em metros. O serviço deverá retornar todos os POIs da base de dados
   que estejam a uma distância menor ou igual a d-max a partir do ponto de referência.
-    * GET http://localhost:3000/api/v1/points_of_interest.json
+    * GET http://localhost:3000/api/v1/points_of_interest
 
     ATRIBUTOS:
     - Coordenada X: 'x'
