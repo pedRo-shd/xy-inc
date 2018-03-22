@@ -1,4 +1,4 @@
-# Test ZUP - API para auxiliar as pessoas na localização de pontos de acesso.
+# Teste ZUP - API para auxiliar as pessoas na localização de pontos de acesso.
 
 ## Getting Started
 
@@ -38,7 +38,11 @@ Para testar a API, suba o projeto:
 
 Este projeto suporta API RESTful:
 * Permite apenas solicitações nos formatos JSON
-    * http://localhost:3000/api/v1/points_of_interest.json
+    * HEADERS:
+    ```
+    Content-Type: application/json
+    ```
+
 
 ### Examplos de chamadas a API
 * Serviço para cadastrar pontos de interesse, com 3 atributos: Nome do POI, coordenada X
@@ -53,7 +57,7 @@ Este projeto suporta API RESTful:
   EXAMPLE BODY:
   ```
   {
-    "name": "Padaria", "x": "10", "y": "10"
+    "name": "Padaria", "x": "8", "y": "8"
   }
   ```
 
@@ -66,44 +70,44 @@ Este projeto suporta API RESTful:
       {
         "id": 1,
         "name": "Padaria",
-        "x": 10,
-        "y": 10,
+        "x": 8,
+        "y": 8,
         "created_at": "2018-03-22T21:25:16.435Z",
         "updated_at": "2018-03-22T21:25:16.435Z"
       }
     }
     ```
 
-    * Serviço para listar POIs por proximidade. Este serviço receberá uma coordenada X
-    e uma coordenada Y, especificando um ponto de referência, bem como uma distância
-    máxima (d-max) em metros. O serviço deverá retornar todos os POIs da base de dados
-    que estejam a uma distância menor ou igual a d-max a partir do ponto de referência.
-      * GET http://localhost:3000/api/v1/points_of_interest.json
+  * Serviço para listar POIs por proximidade. Este serviço receberá uma coordenada X
+  e uma coordenada Y, especificando um ponto de referência, bem como uma distância
+  máxima (d-max) em metros. O serviço deverá retornar todos os POIs da base de dados
+  que estejam a uma distância menor ou igual a d-max a partir do ponto de referência.
+    * GET http://localhost:3000/api/v1/points_of_interest.json
 
-      ATRIBUTOS:
-      - Coordenada X: 'x'
-      - Coordenada Y: 'y'
-      - Distância máxima: 'd_max'
+    ATRIBUTOS:
+    - Coordenada X: 'x'
+    - Coordenada Y: 'y'
+    - Distância máxima: 'd_max'
 
-      EXAMPLE QUERY PARAMETERS:
-      ```
+    EXAMPLE QUERY PARAMETERS:
+    ```
+    {
+      "x": 8,
+      "y": 8,
+      "d_max": 2
+    }
+    ```
+
+    EXAMPLE RESPONSE BODY:
+    ```
+    [
       {
+        "id": 1,
+        "name": "Padaria",
         "x": 8,
         "y": 8,
-        "d_max": 2
+        "created_at": "2018-03-22T21:25:16.435Z",
+        "updated_at": "2018-03-22T21:25:16.435Z"
       }
-      ```
-
-      EXAMPLE RESPONSE BODY:
-      ```
-      [
-        {
-          "id": 1,
-          "name": "Padaria",
-          "x": 10,
-          "y": 10,
-          "created_at": "2018-03-22T21:25:16.435Z",
-          "updated_at": "2018-03-22T21:25:16.435Z"
-        }
-      ]
-      ```
+    ]
+    ```
