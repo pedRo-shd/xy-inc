@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
   describe "POST #create" do
+    before :each do
+      request.env["HTTP_ACCEPT"] = 'application/json'
+    end
 
     context "register point of interest" do
       it "must have success status with allowed attributes" do
@@ -9,7 +12,7 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
            point_of_interest: {
               name: 'Restaurant', x: 10, y: 25
            }
-        }, format: :json
+        }
 
         expect(response).to be_success
         expect(response).to have_http_status(201)
@@ -20,7 +23,7 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
            point_of_interest: {
               name: 'Restaurant', x: -10, y: 25
            }
-        }, format: :json
+        }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
@@ -31,7 +34,7 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
            point_of_interest: {
               name: '', x: -10, y: 25
            }
-        }, format: :json
+        }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
@@ -42,7 +45,7 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
            point_of_interest: {
               name: '', x: 10, y: -25
            }
-        }, format: :json
+        }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
@@ -53,7 +56,7 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
            point_of_interest: {
               nameeeeeee: 'Restaurant', x_x: 10, y: 25
            }
-        }, format: :json
+        }
 
         expect(response).not_to be_success
         expect(response).to have_http_status(422)
@@ -61,4 +64,5 @@ RSpec.describe Api::V1::PointsOfInterestController, type: :controller do
     end
 
   end
+
 end
