@@ -7,7 +7,7 @@ Dependências:
 
 * Ruby: 2.4.2
 
-Para começar a usar este projeto, as informações abaixo:
+Para começar a usar este projeto, siga as informações abaixo:
 * Clone o repositório: `git clone https://github.com/pedRo-shd/xy-inc.git`
 
 * Rode os comandos:
@@ -17,7 +17,7 @@ Para começar a usar este projeto, as informações abaixo:
   ```
 
 Para rodar os testes em rspec com o guard:
-* Rode e depois clique no enter:
+* Rode o comando abaixo e clique em enter:
   ```
   bundle exec guard
   ```
@@ -45,13 +45,13 @@ Este projeto suporta API RESTful:
 (inteiro não negativo) e coordenada Y (inteiro não negativo)
   * http://localhost:3000/api/v1/points_of_interest.json
 
-  ```
   ATRIBUTOS:
   - Nome do POI: 'name'
   - Coordenada X: 'x'
   - Coordenada Y: 'y'
 
   BODY:
+  ```
   {"point_of_interest":{
     "name": "Padaria", "x": "10", "y": "10"
     }
