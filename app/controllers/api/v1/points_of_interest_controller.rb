@@ -1,7 +1,7 @@
 class Api::V1::PointsOfInterestController < ApplicationController
 
   def index
-    #code
+    @points_of_interest = PointOfInterest.all
   end
 
   def create
