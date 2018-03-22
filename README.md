@@ -1,24 +1,59 @@
-# README
+# Test ZUP - API para auxiliar as pessoas na localização de pontos de acesso.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+Dependências:
+* Rails: 5.1.5
 
-* Ruby version
+* Ruby: 2.4.2
 
-* System dependencies
+Para começar a usar este projeto, as informações abaixo:
+* Clone o repositório: `git clone https://github.com/pedRo-shd/xy-inc.git`
 
-* Configuration
+* Rode os comandos:
+  ```
+  bundle install
+  rails db:create db:migrate
+  ```
 
-* Database creation
+Para rodar os testes em rspec com o guard:
+* Rode e depois clique no enter:
+  ```
+  bundle exec guard
+  ```
 
-* Database initialization
+Para rodar os testes apenas com rspec:
+* Rode:
+  ```
+  rspec
+  ```
 
-* How to run the test suite
+Para testar a API, suba o projeto:
+* Rode:
+  ```
+  rails s
+  ```
 
-* Services (job queues, cache servers, search engines, etc.)
+## REST
 
-* Deployment instructions
+Este projeto suporta API RESTful:
+* Permite apenas solicitações nos formatos JSON
+    * http://localhost:3000/api/v1/points_of_interest.json
 
-* ...
+### Examplos de chamadas a API
+* Serviço para cadastrar pontos de interesse, com 3 atributos: Nome do POI, coordenada X
+(inteiro não negativo) e coordenada Y (inteiro não negativo)
+  * http://localhost:3000/api/v1/points_of_interest.json
+
+  ```
+  ATRIBUTOS:
+  - Nome do POI: 'name'
+  - Coordenada X: 'x'
+  - Coordenada Y: 'y'
+
+  BODY:
+  {"point_of_interest":{
+    "name": "Padaria", "x": "10", "y": "10"
+    }
+  }
+  ```
