@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 20180321212356) do
 
   create_table "point_of_interests", force: :cascade do |t|
     t.string "name"
-    t.integer "x", default: 0
-    t.integer "y", default: 0
+    t.integer "x"
+    t.integer "y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
