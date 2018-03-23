@@ -5,6 +5,8 @@ class PointOfInterest < ApplicationRecord
   validates_presence_of :name, :x, :y
   validate :coordinates_negative
 
+  scope :name_of_localities, -> { select(:name, :x, :y).as_json(except: :id) }
+
   def coordinates_negative
     return unless x.present?
     return unless y.present?

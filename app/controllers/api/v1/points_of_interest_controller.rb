@@ -1,8 +1,8 @@
 class Api::V1::PointsOfInterestController < ApplicationController
 
   def index
-    @points_of_interest = PointOfInterest.all
-    render json: @points_of_interest
+    @points_of_interest = PointOfInterest.name_of_localities
+    render json: @points_of_interest, status: 200
   end
 
   def create
