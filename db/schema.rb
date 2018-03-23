@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180321212356) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "point_of_interests", force: :cascade do |t|
     t.string "name"
     t.integer "x"
