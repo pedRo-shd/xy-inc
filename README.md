@@ -7,6 +7,12 @@ Dependências:
 
 * Ruby: 2.4.2
 
+* Postgres (last version)
+  ```
+  sudo apt-get update
+  sudo apt-get install postgresql postgresql-contrib
+  ```
+
 Para começar a usar este projeto, siga as informações abaixo:
 * Clone o repositório: `git clone https://github.com/pedRo-shd/xy-inc.git`
 
